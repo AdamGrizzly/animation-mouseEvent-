@@ -1,0 +1,71 @@
+<style type="text/css">
+	body {
+		margin: 0;
+	}
+	*{
+		box-sizing: border-box;
+	}
+	.container{
+		display: flex;
+		height: 100vh;
+		background-color: black;
+		justify-content: space-around;
+		align-items: center;
+
+	}
+	.card{
+		perspective: 1000px;
+		transform-style: preserve-3d;
+	}
+	.card-item{
+		background-color: #fff;
+		width: 250px;
+		height: 250px;
+		text-align: center;
+		transition: transform 0.2s;
+	}
+	p{
+		padding-top: 5%;	
+	}
+</style>
+
+<body>
+		<div class="container">
+			<div class="card">
+				<div class="card-item">
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nesciunt doloribus delectus distinctio error reiciendis fugiat, sed ab eaque. Modi reiciendis repudiandae molestias quos id odio cumque consectetur excepturi explicabo?</span><span>Officia voluptate facere, porro, voluptatibus, accusantium molestias alias soluta fuga, illo consequatur quidem rerum. Quod quia, excepturi totam porro adipisci, voluptas aliquid ut laudantium officia illo vero est. Eligendi, nisi!</span></p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-item">
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nesciunt doloribus delectus distinctio error reiciendis fugiat, sed ab eaque. Modi reiciendis repudiandae molestias quos id odio cumque consectetur excepturi explicabo?</span><span>Officia voluptate facere, porro, voluptatibus, accusantium molestias alias soluta fuga, illo consequatur quidem rerum. Quod quia, excepturi totam porro adipisci, voluptas aliquid ut laudantium officia illo vero est. Eligendi, nisi!</span></p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-item">
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui nesciunt doloribus delectus distinctio error reiciendis fugiat, sed ab eaque. Modi reiciendis repudiandae molestias quos id odio cumque consectetur excepturi explicabo?</span><span>Officia voluptate facere, porro, voluptatibus, accusantium molestias alias soluta fuga, illo consequatur quidem rerum. Quod quia, excepturi totam porro adipisci, voluptas aliquid ut laudantium officia illo vero est. Eligendi, nisi!</span></p>
+				</div>
+			</div>
+		</div>
+</body>
+
+<script type="text/javascript">
+	const cards = document.querySelectorAll(".card");
+
+	for(var i = 0; i<cards.length; i++){
+		const card = cards[i]
+		card.addEventListener("mousemove", startRotate);
+		card.addEventListener('mouseout', stopRotate);
+	}
+	function startRotate(event) {
+		const cardItem = this.querySelector(".card-item");
+		// cardItem.innerText = event.offsetX+" "+event.offsetY
+		const halfHeight = cardItem.offsetHeight / 2;
+
+		cardItem.style.transform = 'rotateX('+-(event.offsetY - halfHeight)/5+'deg) rotateY('+(event.offsetX - halfHeight) / 5+'deg)'
+	}
+	function stopRotate(event) {
+		const cardItem = this.querySelector('.card-item');
+		cardItem.style.transform = 'rotate(0)'
+	}
+</script>
